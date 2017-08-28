@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
     recipe
   },
   state: {
-    token: 'test token',
+    token: '',
     apiUrl: 'http://jb.pod.party'
   },
   mutations: {

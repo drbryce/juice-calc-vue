@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import Login from '@/components/Login'
 import Recipe from '@/components/Recipe'
+import RecipeIndividual from '@/components/RecipeIndividual'
 import Flavor from '@/components/Flavor'
 import Brand from '@/components/Brand'
 
@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      name: 'index',
+      component: Login
     },
     {
       path: '/login',
@@ -24,6 +24,12 @@ export default new Router({
       path: '/recipe',
       name: 'recipe',
       component: Recipe
+    },
+    {
+      path: '/recipe/individual/:recipeId',
+      name: 'recipeIndividual',
+      component: RecipeIndividual,
+      props: true
     },
     {
       path: '/flavor',

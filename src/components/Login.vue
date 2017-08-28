@@ -39,7 +39,8 @@ export default {
             this.$store.commit('setToken', response.body.token)
             this.$store.dispatch('brand/updateBrandList')
             this.$store.dispatch('flavor/updateFlavorList')
-            this.$router.push('recipe')
+            this.$store.dispatch('recipe/updateRecipeList')
+            this.$router.push('/recipe')
           },
           response => {
             // fail

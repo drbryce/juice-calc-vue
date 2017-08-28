@@ -65,5 +65,37 @@ export const dbController = {
         (data, status, request) => {
           // handle error
         })
+  },
+  getRecipeList () {
+    // GET request
+    Vue.http.get(store.state.apiUrl + '/recipe/listjson', { headers: { token: store.state.token } }).then(
+      (data) => {
+        store.commit('recipe/updateRecipeList', data.body)
+      },
+      (data, status, request) => {
+        // handle error
+      })
+  },
+  addRecipe (message) {
+    // GET request
+    Vue.http.post(store.state.apiUrl + '/recipe/add', message, { headers: { token: store.state.token } })
+      .then(
+        (data) => {
+          store.dispatch('recipe/updateRecipeList')
+        },
+        (data, status, request) => {
+          // handle error
+        })
+  },
+  deleteRecipe (recipeId) {
+    // GET request
+    Vue.http.delete(store.state.apiUrl + '/recipe/delete/' + recipeId, { headers: { token: store.state.token } })
+      .then(
+        (data) => {
+          store.dispatch('recipe/updateRecipeList')
+        },
+        (data, status, request) => {
+          // handle error
+        })
   }
 }
