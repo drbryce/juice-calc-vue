@@ -19,7 +19,7 @@
     <div class="list-group">
       <div v-for="flavor in flavorList" :key="flavor.id" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-end">
-          <div class="mr-auto p-2">{{ flavor.brand }} - {{ flavor.name }}</div>
+          <div class="mr-auto p-2">{{ flavor.brand.shortname }} - {{ flavor.name }}</div>
           <input type="button" v-on:click="removeItem(flavor._id)" class="btn btn-primary float-right" value="delete" role="button"></input>
         </div>
       </div>
