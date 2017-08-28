@@ -14,7 +14,7 @@ export const store = new Vuex.Store({
   },
   state: {
     token: 'test token',
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'http://jb.pod.party'
   },
   mutations: {
     setToken (state, newToken) {
