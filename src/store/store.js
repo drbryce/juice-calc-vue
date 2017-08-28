@@ -1,29 +1,29 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setToken, setBrandList, setBrands } from './actions'
+import { brand } from './modules/brand'
+import { flavor } from './modules/flavor'
+import { recipe } from './modules/recipe'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
+  modules: {
+    brand,
+    flavor,
+    recipe
+  },
   state: {
     token: 'test token',
-    brandList: [],
     apiUrl: 'http://localhost:3000'
   },
   mutations: {
     setToken (state, newToken) {
-    state.token = newToken
-    },
-    setBrandList (state, items) {
-      state.brandList = items
-    },
-    setBrands (state, brands) {
-      state.brandList = brands
+      state.token = newToken
     }
-   },
+  },
   actions: {
-    setToken,
-    setBrandList,
-    setBrands
+    setToken (context, newToken) {
+      context.commit('setToken', newToken)
+    }
   }
 })

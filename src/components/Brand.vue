@@ -1,0 +1,60 @@
+<template>
+<div>
+  <h1>Brand</h1>
+  <div class="mt-3">
+  <form action="" v-on:submit.prevent="addBrand" method="POST">
+    <div class="form-group">
+      <input type="text" v-model="shortName" name="shortname" class="form-control" placeholder="ABC">
+    </div>
+    <div class="form-group">
+      <input type="text" v-model="longName" name="longname" class="form-control" placeholder="Long Company Name">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Add Item">
+  </form>
+  </div>
+  <ul class="list-group">
+    <div class="list-group">
+      <div v-for="brand in brandList" :key="brand.id" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-end">
+          <div class="mr-auto p-2">{{ brand.shortname }} - {{ brand.longname }}</div>
+          <input type="button" v-on:click="removeItem(brand._id)" class="btn btn-primary float-right" value="delete" role="button"></input>
+        </div>
+      </div>
+    </div>
+  </ul>
+</div>
+</template>
+
+<script>
+export default {
+  name: 'brand',
+  data () {
+    return {
+      shortName: '',
+      longName: ''
+    }
+  },
+  computed: {
+    brandList () {
+      return this.$store.state.brand.brandList
+    }
+  },
+  methods: {
+    removeItem (item) {
+      this.$store.dispatch('brand/deleteBrand', item)
+    },
+    addBrand () {
+      var message = {
+        sname: this.shortName,
+        lname: this.longName
+      }
+      this.$store.dispatch('brand/addBrand', message)
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+</style>

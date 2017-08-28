@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <router-view></router-view>
+    <div class="container-fluid">
+      <nav-bar></nav-bar>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import NavBar from './components/NavBar.vue'
-import { Bus } from './controllers/bus'
-import './controllers/dbController'
-
+import NavBar from './components/NavBar'
 export default {
   name: 'app',
   components: {
     'nav-bar': NavBar
-  },
-  data () {
-    return {
-    }
   },
   mounted: function () {
   }
@@ -25,4 +20,5 @@ export default {
 </script>
 
 <style>
+
 </style>
