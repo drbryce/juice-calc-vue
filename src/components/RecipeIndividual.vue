@@ -1,7 +1,7 @@
 <template>
 <div>
   <h1>Recipe - {{ recipe.name }}</h1>
-  <ul class="list-group">
+  <ul class="list-group mb-3">
     <div class="list-group">
       <div v-for="flavor in recipe.flavors" :key="flavor._id" 
         class="list-group-item list-group-item-action flex-column align-items-start">
@@ -13,20 +13,47 @@
       </div>
     </div>
   </ul>
-  <p>VG volume: {{ vgVolume }} VG weight: {{ ((vgRatio/100) * mixVolume) * vgWeight }}</p>
-  <p>PG volume: {{pgVolume}} PG weight: {{pgCalcWeight}}</p>
-  <p>nicotine volume: {{nicSolutionVolume}} nicotine weight: {{nicSolutionWeight}}</p>
-  <p>volume to mix (ml): <input v-model.number.lazy="mixVolume"></input></p>
-  <p>vg to pg ratio: <input v-model.number.lazy="vgRatio"></input></p>
-  <p>nicotine (%): <input v-model.number.lazy="nicPercent"></input></p>
-  <p>nicotine solution strength (mg): <input v-model.number.lazy="nicStrength"></input></p>
-  <p>nicotine solution vg to pg ratio (%): <input v-model.number.lazy="nicVgPgRatio"></input></p>
-  <p>PG weight (mg): <input v-model.number.lazy="pgWeight"></input></p>
-  <p>VG weight (mg): <input v-model.number.lazy="vgWeight"></input></p>
-  <p>pure nicotine weight (mg): <input v-model.number.lazy="pureNicWeight"></input></p>
-  <p>flavor weight (mg): <input v-model.number.lazy="flavorWeight"></input></p>
-
-  <p v-if="recipe.notes">Notes: {{ recipe.notes }}</p>
+  <form>
+    <div class="form-group">
+      <p>VG volume: {{ vgVolume }} VG weight: {{ ((vgRatio / 100) * mixVolume) * vgWeight }}</p>
+      <p>PG volume: {{pgVolume}} PG weight: {{pgCalcWeight}}</p>
+      <p>Nicotine volume: {{nicSolutionVolume}} nicotine weight: {{nicSolutionWeight}}</p>
+    </div>
+    <div class="form-group row">
+      <label for="mixvolume" class="col-4 col-form-label">Volume to mix (ml):</label>
+      <div>
+        <input type="text" class="form-control" id="mixvolume" v-model.number.lazy="mixVolume"></input>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="vgratio" class="col-4 col-form-label">VG to PG ratio:</label>
+      <div>
+        <input type="text" class="form-control" id="vgratio" v-model.number.lazy="vgRatio"></input>
+      </div>
+    </div>
+    <div class="form-group row">
+      <p>nicotine (%): <input v-model.number.lazy="nicPercent"></input></p>
+    </div>
+    <div class="form-group row">
+      <p>nicotine solution strength (mg): <input v-model.number.lazy="nicStrength"></input></p>
+    </div>
+    <div class="form-group row">
+      <p>nicotine solution vg to pg ratio (%): <input v-model.number.lazy="nicVgPgRatio"></input></p>
+    </div>
+    <div class="form-group row">
+      <p>PG weight (mg): <input v-model.number.lazy="pgWeight"></input></p>
+    </div>
+    <div class="form-group row">
+      <p>VG weight (mg): <input v-model.number.lazy="vgWeight"></input></p>
+    </div>
+    <div class="form-group row">
+      <p>pure nicotine weight (mg): <input v-model.number.lazy="pureNicWeight"></input></p>
+    </div>
+    <div class="form-group row">
+      <p>flavor weight (mg): <input v-model.number.lazy="flavorWeight"></input></p>
+    </div>
+    <p v-if="recipe.notes">Notes: {{ recipe.notes }}</p>
+  </form>
 </div>
 </template>
 
