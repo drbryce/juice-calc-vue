@@ -9,9 +9,6 @@
           <div class="mr-auto p-2">
             {{ flavor.flavor.brand.shortname }} - {{ flavor.flavor.name }} - {{ flavor.percentage }}% volume:{{ (flavor.percentage / 100) * mixVolume }} weight: {{ ((flavor.percentage / 100) * mixVolume) * flavorWeight }}
           </div>
-          <input type="button" v-on:click="removeItem(brand._id)" 
-            class="btn btn-primary float-right" value="delete" role="button">
-          </input>
         </div>
       </div>
     </div>
