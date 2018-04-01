@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    <h1>Login</h1>
     <form action="" v-on:submit.prevent="onSubmit" method="POST">
       <div class = "form-group">
         <label for="username">Username</label>
@@ -11,7 +12,6 @@
       </div>
       <input class="btn btn-primary" type="submit" value="Login">
     </form>
-    <p>{{testData}}</p>
   </div>
 </template>
 
@@ -21,8 +21,7 @@ export default {
   data () {
     return {
       username: '',
-      password: '',
-      testData: ''
+      password: ''
     }
   },
   computed: {
@@ -45,7 +44,7 @@ export default {
           },
           response => {
             // fail
-            this.testData = 'fail: ' + response.status + ' ' + response.body
+            console.log('fail: ' + response.status + ' ' + response.body)
           })
       }
     }

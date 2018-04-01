@@ -1,11 +1,6 @@
 <template>
   <div id="nav-bar" class="my-3">
-    <ul v-if="!loggedIn" class="nav nav-tabs">
-      <li class="nav-item">
-        <router-link to="/login" class="nav-link">Login</router-link>
-      </li>
-    </ul>
-    <ul v-else class="nav nav-tabs">
+    <ul v-if="loggedIn" class="nav nav-tabs">
       <li class="nav-item">
         <router-link to="/recipe" class="nav-link">Recipe</router-link> 
       </li> 
