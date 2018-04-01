@@ -16,6 +16,9 @@
         <router-link to="/brand" exact class="nav-link">Brand</router-link> 
       </li> 
       <li class="nav-item">
+        <router-link to="/order" exact class="nav-link">Order</router-link> 
+      </li> 
+      <li class="nav-item">
         <a v-on:click="logOut" href="#" class="nav-link">Logout</a>
       </li> 
     </ul>

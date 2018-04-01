@@ -13,7 +13,7 @@ export const dbController = {
       })
   },
   addBrand (message) {
-    // GET request
+    // POST request
     Vue.http.post(store.state.apiUrl + '/brand/add', message, { headers: { token: store.state.token } })
       .then(
         (data) => {
@@ -44,6 +44,16 @@ export const dbController = {
         // handle error
       })
   },
+  getOrderList () {
+    // GET request
+    Vue.http.get(store.state.apiUrl + '/flavor/listOrderJSON', { headers: { token: store.state.token } }).then(
+      (data) => {
+        store.commit('flavor/updateOrderList', data.body)
+      },
+      (data, status, request) => {
+        // handle error
+      })
+  },
   addFlavor (message) {
     // GET request
     Vue.http.post(store.state.apiUrl + '/flavor/add', message, { headers: { token: store.state.token } })
@@ -66,6 +76,31 @@ export const dbController = {
           // handle error
         })
   },
+  setOrderFlavor (flavorId) {
+    // GET request
+    Vue.http.post(store.state.apiUrl + '/flavor/order/flag/' + flavorId, null, { headers: { token: store.state.token } })
+      .then(
+        (data) => {
+          // success
+          store.dispatch('flavor/updateOrderList')
+        },
+        (data, status, request) => {
+          // handle error
+        })
+  },
+  unsetOrderFlavor (flavorId) {
+    // GET request
+    Vue.http.post(store.state.apiUrl + '/flavor/order/unflag/' + flavorId, null, { headers: { token: store.state.token } })
+      .then(
+        (data) => {
+          // success
+          store.dispatch('flavor/updateOrderList')
+        },
+        (data, status, request) => {
+          // handle error
+        })
+  },
+
   getRecipeList () {
     // GET request
     Vue.http.get(store.state.apiUrl + '/recipe/listjson', { headers: { token: store.state.token } }).then(

@@ -14,7 +14,7 @@
       <label for="flavorname">Flavor name:</label>
       <input type="text" v-model="flavorName" id="flavorname" class="form-control" placeholder="Not Strawberry">
     </div>
-    <input type="button" v-on:click="addFlavor()" class="btn btn-primary" value="Add Flavor" role="button"></input>
+    <input type="button" v-on:click="addFlavor()" class="btn btn-primary" value="Add Flavor" role="button" />
   </form>
   </div>
   <div class="mt-3 mb-4">
@@ -23,7 +23,8 @@
         <div v-for="flavor in flavorList" :key="flavor.id" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-end">
             <div class="mr-auto p-2">{{ flavor.brand.shortname }} - {{ flavor.name }}</div>
-            <input type="button" v-on:click="removeItem(flavor._id)" class="btn btn-primary float-right" value="delete" role="button"></input>
+            <input type="button" class="btn float-left" v-on:click="reorder(flavor._id)" value="reorder" role="button" />
+            <input type="button" v-on:click="removeItem(flavor._id)" class="btn btn-primary float-right" value="delete" role="button" />
           </div>
         </div>
       </div>
@@ -59,6 +60,9 @@ export default {
         brand: this.selectedName
       }
       this.$store.dispatch('flavor/addFlavor', message)
+    },
+    reorder (flavId) {
+      this.$store.dispatch('flavor/setOrder', flavId)
     }
   }
 }

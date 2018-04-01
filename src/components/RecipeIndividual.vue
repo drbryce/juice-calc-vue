@@ -18,6 +18,9 @@
           <div class="p-2 h5">
             Weight: {{ (((flavor.percentage / 100) * mixVolume) * flavorWeight).toFixed(1) }} mg
           </div>
+          <div class="p-2">
+            <button type="button" class="btn" v-on:click="reorder(flavor.flavor._id)">Reorder</button>
+          </div>
         </div>
       </div>
       <div class="list-group-item list-group-item-action flex-column align-items-start">
@@ -144,7 +147,6 @@ export default {
     },
     recipe () {
       return this.recipeList.find(item => {
-        console.log(item)
         return (item._id === this.recipeId)
       })
     },
@@ -178,6 +180,9 @@ export default {
     }
   },
   methods: {
+    reorder (flavId) {
+      this.$store.dispatch('flavor/setOrder', flavId)
+    }
   }
 }
 </script>

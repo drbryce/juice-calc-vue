@@ -5,6 +5,7 @@ import Recipe from '@/components/Recipe'
 import RecipeIndividual from '@/components/RecipeIndividual'
 import Flavor from '@/components/Flavor'
 import Brand from '@/components/Brand'
+import Order from '@/components/Order'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/brand',
       name: 'brand',
       component: Brand
+    },
+    {
+      path: '/order',
+      name: 'order',
+      component: Order
     }
   ],
   linkActiveClass: 'active'

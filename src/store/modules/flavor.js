@@ -3,11 +3,15 @@ import { dbController } from '../../controllers/dbController'
 export const flavor = {
   namespaced: true,
   state: {
-    flavorList: []
+    flavorList: [],
+    orderList: []
   },
   mutations: {
     updateFlavorList (state, flavors) {
       state.flavorList = flavors
+    },
+    updateOrderList (state, flavors) {
+      state.orderList = flavors
     }
   },
   actions: {
@@ -19,6 +23,15 @@ export const flavor = {
     },
     deleteFlavor (context, flavorId) {
       dbController.deleteFlavor(flavorId)
+    },
+    setOrder (context, flavorId) {
+      dbController.setOrderFlavor(flavorId)
+    },
+    unsetOrder (context, flavorId) {
+      dbController.unsetOrderFlavor(flavorId)
+    },
+    updateOrderList (context) {
+      context.commit('updateOrderList', dbController.getOrderList())
     }
   },
   getters: {}

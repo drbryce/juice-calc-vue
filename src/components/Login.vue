@@ -39,6 +39,7 @@ export default {
             this.$store.commit('setToken', response.body.token)
             this.$store.dispatch('brand/updateBrandList')
             this.$store.dispatch('flavor/updateFlavorList')
+            this.$store.dispatch('flavor/updateOrderList')
             this.$store.dispatch('recipe/updateRecipeList')
             this.$router.push('/recipe')
           },
