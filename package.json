@@ -1,7 +1,7 @@
 {
   "name": "juice-calc-vue",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
+  "version": "1.1.0",
+  "description": "E-Juice calculator and recipe management",
   "author": "drbryce <bryce.e.harrison@gmail.com>",
   "private": true,
   "scripts": {

@@ -7,7 +7,7 @@
       <input v-model="recipeName" id="recipename" class="form-control" placeholder="Recipe name">
     </div>
     <div class="form-group">
-      <input type="button" class="btn btn-primary" v-on:click="addRecipe" value="Add Recipe"></input>
+      <input type="button" class="btn btn-primary" v-on:click="addRecipe" value="Add Recipe" />
     </div>
     <div class="form-group">
       <label for="selectedflavor">Flavor:</label> 
@@ -19,7 +19,7 @@
       <label for="flavorpercentage">Percentage:</label> 
       <input v-model.number="flavorPercentage" type="number" class="form-control" id="flavorpercentage">
     </div>
-    <input type="button" v-on:click="addFlavor" class="btn btn-primary" value="Add Flavor"></input>
+    <input type="button" v-on:click="addFlavor" class="btn btn-primary" value="Add Flavor" />
     <div v-if="recipeFlavorList">
       <div class="form-group mt-3 mb-4">
         <ul class="list-group">
@@ -27,7 +27,7 @@
             <div v-for="flavor in recipeFlavorList" :key="flavor._id" class="list-group-item list-group-item-action flex-column align-items-start">
               <div class="d-flex w-100 justify-content-end">
                 <div class="mr-auto p-2">{{flavor.flavor.brand.shortname}} - {{flavor.flavor.name}} : {{flavor.flavorpercent}}%</div>
-                <input type="button" class="btn btn-warning float-right" v-on:click="removeFlavor(flavor.flavor._id)" value="remove"></input>
+                <input type="button" class="btn btn-warning float-right" v-on:click="removeFlavor(flavor.flavor._id)" value="remove" />
               </div>
             </div>
           </div>  
@@ -46,9 +46,9 @@
         <div class="d-flex w-100 justify-content-end">
           <div class="mr-auto p-2">{{ recipe.name }}</div>
           <input type="button" v-on:click="viewItem(recipe._id)" 
-            class="btn btn-primary" value="view" role="button"></input>&nbsp
+            class="btn btn-primary" value="view" role="button" />&nbsp;
           <input type="button" v-on:click="removeItem(recipe._id)" 
-            class="btn btn-danger" value="delete" role="button"></input>
+            class="btn btn-danger" value="delete" role="button" />
         </div>
       </div>
     </div>
