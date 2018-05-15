@@ -23,7 +23,7 @@
         <div v-for="flavor in flavorList" :key="flavor.id" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-end">
             <div class="mr-auto p-2">{{ flavor.brand.shortname }} - {{ flavor.name }}</div>
-            <input type="button" class="btn float-left" v-on:click="reorder(flavor._id)" value="reorder" role="button" />
+            <input v-if="checkStock(flavor._id)" type="button" class="btn float-left" v-on:click="reorder(flavor._id)" value="reorder" role="button" />
             <input type="button" v-on:click="removeItem(flavor._id)" class="btn btn-primary float-right" value="delete" role="button" />
           </div>
         </div>
@@ -48,6 +48,9 @@ export default {
     },
     brandList () {
       return this.$store.state.brand.brandList
+    },
+    orderList () {
+      return this.$store.state.flavor.orderList
     }
   },
   methods: {
@@ -63,6 +66,14 @@ export default {
     },
     reorder (flavId) {
       this.$store.dispatch('flavor/setOrder', flavId)
+    },
+    checkStock (flavId) {
+      for (var i = 0; i < this.orderList.length; i++) {
+        if (this.orderList[i]._id === flavId) {
+          return false
+        }
+      }
+      return true
     }
   }
 }
